@@ -1,0 +1,136 @@
+<div class="section">
+
+
+  <div class="col grid_1_of_2">
+    <img src="../../assets/addCard.gif" id="add-card" />
+    <div class="card-container">
+      <span id="number"> </span>
+      <span id="name"></span>
+      <span id="date"></span>
+      <span id="label">Credit Card</span>
+      <img src="../../assets/visa-card.png" id="visa" class="visa-card" />
+      <img src="../../assets/mastercard.png" id="mastercard" class="mastercard" />
+      <img src="../../assets/xpress.png" id="xpress" class="xpress" />
+      <img src="../../assets/card.png" class="credit-card" />
+
+    </div>
+  </div>
+  <div class="col grid_2_of_2">
+
+    <form id="creditCard-form" [formGroup]="submitForm" (ngSubmit)="validateCard(submitForm)">
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="inputCardHolder">Card Holder</label>
+          <input formControlName="cardHolder"
+                 type="text"
+                 class="form-control"
+                 id="inputCardHolder"
+                 placeholder="e.g Jane Doe"required>
+        </div>
+        <div class="form-group col-md-12">
+          <label for="inputCardNumber">Card Number</label>
+          <input formControlName="cardNumber"
+                 type="text"
+                 class="form-control"
+                 id="inputCardNumber"
+                 placeholder="xxxx-xxx-xxxx-xxxx-xxxx" minlength="13" maxlength="19" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputCountry">Country</label>
+          <select formControlName="countryName"
+                  id="inputCountry"
+                  class="form-control">
+            <option value="">- Select -</option>
+            <option *ngFor="let country of countries" [ngValue]="country.countryName">
+              {{country.countryName}}
+            </option>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputCountry">Card Type</label>
+          <select formControlName="CardType"
+                  id="inputCardType"
+                  class="form-control">
+            <option value="">- Select -</option>
+            <option value="visa">
+              Visa
+            </option>
+            <option value="mastercard">
+              Master Card
+            </option>
+            <option value="xpress">
+              American Express
+            </option>
+            <option value="other">
+              Other
+            </option>
+          </select>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="Exdate">Expiry Date</label>
+          <input formControlName="ExDate"
+                 type="month"
+                 min="2022-05"
+                 class="form-control"
+                 id="Exdate">
+        </div>
+      </div>
+      <div class="form-group content-justify-end">
+        <button class="btn btn-primary" type="submit" [disabled]="!submitForm.valid">Submit Card Details Country</button>
+      </div>
+
+    </form>
+    <br />
+    <div class="container">
+      <br />
+      <div class="row">
+        <div class="col text-center">
+          <ol class="breadcrumb col-md-12">
+            <li class="breadcrumb-item active">
+              <div class="text-center"><h3 class="">Captured Credit Card Details</h3></div>
+            </li>
+          </ol>
+        </div>
+      </div>
+      <br />
+      <table class="table table-bordered table-sm">
+        <tr>
+          <th width="250px" class="navbar-dark bg-dark">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            Card Holder
+          </th>
+          <th class="navbar-dark bg-dark">
+            <i class="fa fa-credit-card" aria-hidden="true"></i>
+            Card Number
+          </th>
+          <th width="200px" class="navbar-dark bg-dark">
+            <i class="fa fa-globe" aria-hidden="true"></i>
+            Country
+          </th>
+          <th width="200px" class="navbar-dark bg-dark">
+            <i class="fa fa-calendar" aria-hidden="true"></i>
+            Expiry Date
+          </th>
+        </tr>
+        <tr *ngFor="let card of cardDetails">
+          <!--<td><img src="" class="flag" /></td>-->
+          <td>{{card.cardHolder}}</td>
+          <td>{{card.cardNumber}}</td>
+          <td>{{card.countryName}}</td>
+          <td class="text-center">
+            {{card.ExDate}}
+            <!--<a href="#" [routerLink]="['/bannedcountries/',  country.contryId, 'edit']" class="btn btn-primary b--><!--tn-sm"><i class="fa fa-pencil" aria-hidden="true"></i>  Unban</a>-->
+          </td>
+        </tr>
+      </table>
+      <p *ngIf="!cardDetails || cardDetails.length == 0" class="text-center"><em>No Credit Cards Added!</em></p>
+    </div>
+
+  </div>
+
+
+
+</div>

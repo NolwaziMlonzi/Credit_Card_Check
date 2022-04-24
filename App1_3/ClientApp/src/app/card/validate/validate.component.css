@@ -1,0 +1,75 @@
+.section {
+  background: #c1a6dd;
+  border-radius: 7px;
+  margin-top: 5%;
+}
+
+img {
+  height: 200px;
+}
+
+.grid_1_of_2 {
+  text-align: center;
+}
+
+.col {
+  padding: 2rem;
+}
+.credit-card {
+  width: 370px;
+  height: 250px;
+}
+#number {
+  z-index: 1;
+  position: absolute;
+  left: 31rem;
+  top: 9rem;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: monospace;
+}
+.card-container {
+  z-index: 0;
+  position: relative;
+  display: none;
+}
+#name {
+  position: relative;
+  z-index: 1;
+  left: 14rem;
+  top: 4rem;
+  font-size: 14px;
+}
+#date {
+  z-index: 1;
+  position: relative;
+  top: 4rem;
+  left: 16rem;
+}
+.visa-card,.mastercard {
+  z-index: 5;
+  position: absolute;
+  width: 50px;
+  height: 30px;
+  right: 19.4rem;
+  top: 11rem;
+}
+.mastercard, .visa-card {
+  display: none
+}
+  #label {
+  z-index: 6;
+  position: absolute;
+  right: 20rem;
+  top: 4rem;
+  font-size: 25px;
+  font-weight: 400;
+}
+.xpress {
+  z-index: 5;
+  position: absolute;
+  width: 50px;
+  height: 55px;
+  right: 19.8rem;
+  top: 10rem;
+}

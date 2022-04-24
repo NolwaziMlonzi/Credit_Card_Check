@@ -1,0 +1,30 @@
+<div class="container">
+  <br />
+  <div class="row">
+    <div class="col">
+      <h3><i class="fa fa-ban" aria-hidden="true"></i> Banned Countries</h3>
+      <p *ngIf="!countries"><em>Loading...</em></p>
+    </div>
+    <div class="col text-right">
+      <a href="#" routerLink="/bannedcountries/create/" class="btn btn-success btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Add Country To Banned List</a>
+    </div>
+  </div>
+  <br />
+  <table class="table table-bordered table-sm">
+    <tr>
+      <th width="50px" class="navbar-dark bg-dark">
+      </th>
+      <th class="navbar-dark bg-dark">Country Name</th>
+      <th width="200px" class="navbar-dark bg-dark">
+      </th>
+    </tr>
+    <tr *ngFor="let country of countries">
+      <td><img src="{{country.flag}}" class="flag"/></td>
+      <td>{{ country.countryName }}</td>
+      <td class="text-center">
+        
+        <a href="#" [routerLink]="['/bannedcountries/',  country.contryId, 'edit']" class="btn btn-primary btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i>  Unban</a>
+      </td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,29 @@
+<div class="container">
+  <br />
+  <div class="row">
+    <div class="col">
+      <h3>Unban Country</h3>
+    </div>
+    <div class="col text-right">
+      <a href="#" routerLink="/bannedcountries/list" class="btn btn-secondary btn-sm">Back To Countries List</a>
+    </div>
+  </div>
+  <br />
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit(editForm)">
+
+    <input formControlName="contryId"
+           id="contryId"
+           type="text" disabled/>
+    <input formControlName="flag"
+           id="flag"
+           type="hidden" />
+    <div class="form-group">
+      <label for="countryName">Country Name:</label>
+      <input formControlName="countryName"
+             id="countryName"
+             type="text"
+             class="form-control" disabled />
+    </div>
+    <button class="btn btn-primary" type="submit" [disabled]="!editForm.valid">Unban</button>
+  </form>
+</div>
