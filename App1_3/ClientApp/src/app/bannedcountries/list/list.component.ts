@@ -28,10 +28,7 @@ export class ListComponent implements OnInit {
   getBannedList() {
     this.bannedCountryService.getBannedCoutries().subscribe((data: Bannedcountry[]) => {    
       var index = 0;
-      this.countries = _.sortBy(_.map(data, function (country) {
-        index += 1;
-        return { contryId: index, countryName: country["name"]["common"], flag: country["flags"]["png"] };
-      }),
+      this.countries = _.sortBy(data,
         [function (countries) {
           return countries.countryName;
         }]);
